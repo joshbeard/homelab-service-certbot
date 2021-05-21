@@ -1,0 +1,10 @@
+stages:
+  - deploy
+
+swarm:
+  image: docker:20
+  stage: deploy
+  script:
+    - cp $DOCKER_TLS_CACERT $DOCKER_TLS_CERT $DOCKER_TLS_KEY $DOCKER_CERT_PATH
+    - cd deploy
+    - docker stack deploy -c docker-compose.yml certbot

@@ -1,0 +1,35 @@
+# docker-compose.yml file for Docker Swarm deployment
+version: '3.8'
+services:
+    certbot:
+      image: certbot/dns-route53
+      env_file: ../../route53-ddns/config/home.jbeard.dev.env
+      environment:
+        - DOMAINS=home.jbeard.dev *.home.jbeard.dev;jbeard.dev *.jbeard.dev
+        - EMAIL=ssl@jbeard.dev
+      volumes:
+        - ssl_certs:/etc/letsencrypt
+        - /etc/localtime:/etc/localtime
+      configs:
+        - source: crontab
+          target: /etc/crontabs/root
+        - source: check_script
+          target: /opt/util/check.py
+          mode: 0755
+      entrypoint: ["crond", "-f", "-d", "8"]
+
+configs:
+  check_script:
+    name: certbot-check-20210428-8
+    file: ../bin/check.py
+  crontab:
+    name: certbot-crontab-20210428-4
+    file: crontab
+
+volumes:
+  etc: {}
+  ssl_certs:
+    driver_opts:
+      type: "nfs"
+      o: "addr=nfs.home.jbeard.dev,nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2"
+      device: "nfs.home.jbeard.dev:/store/data/ssl"

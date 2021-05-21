@@ -1,0 +1,14 @@
+# docker-compose.yml for running locally
+version: '3.8'
+services:
+    certbot:
+        image: certbot/dns-route53
+        env_file: ../route53-ddns/config/home.jbeard.dev.env
+        volumes:
+          - "./etc:/etc/letsencrypt"
+          - "./var:/var/lib/letsencrypt"
+          - "./certs:/tmp/certs"
+          - "./check.sh:/check.sh"
+        entrypoint: /bin/sh
+        command: /check.sh
+        #command: ["crond", "-f", "-d", "8"]
