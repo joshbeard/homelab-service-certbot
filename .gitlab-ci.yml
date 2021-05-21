@@ -5,6 +5,9 @@ swarm:
   image: docker:20
   stage: deploy
   script:
-    - cp $DOCKER_TLS_CACERT $DOCKER_TLS_CERT $DOCKER_TLS_KEY $DOCKER_CERT_PATH
+    - mkdir -p $DOCKER_CERT_PATH
+    - cp $DOCKER_TLS_CACERT $DOCKER_CERT_PATH/ca.pem
+    - cp $DOCKER_TLS_CERT $DOCKER_CERT_PATH/cert.pem
+    - cp $DOCKER_TLS_KEY $DOCKER_CERT_PATH/key.pem
     - cd deploy
     - docker stack deploy -c docker-compose.yml certbot
