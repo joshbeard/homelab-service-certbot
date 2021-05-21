@@ -3,10 +3,12 @@ version: '3.8'
 services:
     certbot:
       image: certbot/dns-route53
-      env_file: ../../route53-ddns/config/home.jbeard.dev.env
       environment:
         - DOMAINS=home.jbeard.dev *.home.jbeard.dev;jbeard.dev *.jbeard.dev
         - EMAIL=ssl@jbeard.dev
+        - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+        - AWS_REGION=${AWS_REGION}
       volumes:
         - ssl_certs:/etc/letsencrypt
         - /etc/localtime:/etc/localtime
