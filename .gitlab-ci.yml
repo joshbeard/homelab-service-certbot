@@ -5,7 +5,7 @@ stages:
 storage:
   stage: infra
   image:
-    name: code.home.jbeard.dev:5050/homelab/ansible/homelab-control/ansible-tool:latest
+    name: code.home.jbeard.dev:5050/homelab/platform/homelab-base/ansible-tool:latest
     entrypoint: ['']
   before_script:
     - set -a
