@@ -1,0 +1,12 @@
+# ------------------------------------------
+# NFS Exports
+# ------------------------------------------
+- name: "SSL NFS storage"
+  hosts: nfs
+  gather_facts: true
+  tasks:
+    - include_role:
+        name: jbeard.nfs
+      vars:
+        nfs_exports:
+          - ssl: /store/data/ssl 10.0.13.0/24(sync,rw,no_subtree_check,no_root_squash)

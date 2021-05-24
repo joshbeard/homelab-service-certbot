@@ -1,5 +1,17 @@
 stages:
+  - storage
   - deploy
+
+storage:
+  stage: infra
+  image:
+    name: code.home.jbeard.dev:5050/homelab/ansible/homelab-control/ansible-tool:latest
+    entrypoint: ['']
+  before_script:
+    - set -a
+    - cp $SSH_PRIVATE_KEY /home/ansible/.ssh/id_rsa && chmod 400 /home/ansible/.ssh/id_rsa
+  script:
+    - ansible-playbook -i inventory.ini -u deployer -b -l nfs infra.yml
 
 swarm:
   image: docker:20
