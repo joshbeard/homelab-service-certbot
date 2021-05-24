@@ -1,5 +1,5 @@
 stages:
-  - storage
+  - infra
   - deploy
 
 storage:
