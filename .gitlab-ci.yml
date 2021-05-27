@@ -11,7 +11,8 @@ storage:
     - set -a
     - cp $SSH_PRIVATE_KEY /home/ansible/.ssh/id_rsa && chmod 400 /home/ansible/.ssh/id_rsa
   script:
-    - ansible-playbook -i inventory.ini -u deployer -b -l nfs infra.yml
+    - ansible-galaxy install -r requirements.yml
+    - ansible-playbook -i inventory.ini -u deployer -b nfs.yml
 
 swarm:
   image: docker:20
