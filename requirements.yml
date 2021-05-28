@@ -1,3 +1,3 @@
-- src: https://gitlab.com/jbeard.dev/ansible/jbeard-nfs.git
-  scm: git
-  name: jbeard.nfs
+collections:
+  - name: https://code.home.jbeard.dev/homelab/platform/homelab-base.git
+    type: git
