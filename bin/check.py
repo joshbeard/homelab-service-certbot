@@ -29,7 +29,6 @@ def run_command(domain_set):
       '-n',
       '--dns-route53',
       '--agree-tos',
-      '--dns-route53-propagation-seconds 60',
       '--expand',
       '-m', email
     ]

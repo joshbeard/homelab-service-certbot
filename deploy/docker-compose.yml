@@ -22,7 +22,7 @@ services:
 
 configs:
   check_script:
-    name: certbot-check-20220322-1
+    name: certbot-check-20220322-2
     file: ../bin/check.py
   crontab:
     name: certbot-crontab-20210428-4
