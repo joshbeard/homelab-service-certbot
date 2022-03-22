@@ -4,7 +4,7 @@ services:
     certbot:
       image: certbot/dns-route53
       environment:
-        - DOMAINS=home.jbeard.dev *.home.jbeard.dev;jbeard.dev *.jbeard.dev jbeard.co *.jbeard.co
+        - DOMAINS=home.jbeard.dev *.home.jbeard.dev;jbeard.dev *.jbeard.dev;jbeard.co *.jbeard.co
         - EMAIL=ssl@jbeard.dev
         - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
         - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
