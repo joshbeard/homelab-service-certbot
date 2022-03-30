@@ -1,13 +1,13 @@
 # certbot service
 
-A script and Docker deployment for running a script for [certbot]()
+A script and Docker deployment for running a script for [certbot](https://certbot.eff.org/)
 registrations and renewals.
 
 ## Usage
 
 The [`bin/check.py`](bin/check.py) is a rudimentary script that wraps the
 `certbot` command with a defined list of domains to request certificates for.
-This is configured to use the [route53]() plugin for registrations.
+This is configured to use the [route53](https://certbot-dns-route53.readthedocs.io/en/stable/index.html) plugin for registrations.
 
 ### Configuration
 

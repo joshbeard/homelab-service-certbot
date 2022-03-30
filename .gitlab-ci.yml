@@ -1,3 +1,7 @@
+# GitLab pipeline configuration for certbot
+#
+# This uses Ansible to manage an NFS export on my NFS server and Docker to
+# deploy it to my Swarm server.
 stages:
   - infra
   - deploy
@@ -11,6 +15,7 @@ storage:
     - set -a
     - cp $SSH_PRIVATE_KEY /home/ansible/.ssh/id_rsa && chmod 400 /home/ansible/.ssh/id_rsa
   script:
+    - cd deploy/playbook
     - ansible-galaxy install -r requirements.yml
     - ansible-playbook -i inventory.ini -u deployer -b nfs.yml
 

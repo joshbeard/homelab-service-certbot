@@ -14,7 +14,6 @@
 #        Example: EMAIL="ssl@jbeard.dev"
 #
 import os
-import shlex
 import subprocess
 
 domains = os.environ.get('DOMAINS')
