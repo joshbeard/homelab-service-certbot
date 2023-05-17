@@ -20,7 +20,7 @@ storage:
     - ansible-playbook -i inventory.ini -u deployer -b nfs.yml
 
 swarm:
-  image: docker:23
+  image: docker:24
   stage: deploy
   before_script:
     - export DOCKER_CERT_PATH=$DEPLOY_DOCKER_CERT_PATH
